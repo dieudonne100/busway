@@ -1,3 +1,4 @@
+import 'package:busway/app/modules/home/widgets/ticket.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,12 +14,7 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: const Tickets(),
     );
   }
 }

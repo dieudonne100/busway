@@ -20,6 +20,8 @@ import '../modules/saets/bindings/saets_binding.dart';
 import '../modules/saets/views/saets_view.dart';
 import '../modules/search/bindings/search_binding.dart';
 import '../modules/search/views/search_view.dart';
+import '../modules/splashsreen/bindings/splashsreen_binding.dart';
+import '../modules/splashsreen/views/splashsreen_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -28,7 +30,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.WELCOME;
 
   static final routes = [
     GetPage(
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASHSREEN,
+      page: () => const SplashsreenView(),
+      binding: SplashsreenBinding(),
     ),
   ];
 }

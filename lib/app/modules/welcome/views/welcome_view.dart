@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 
@@ -9,16 +10,20 @@ class WelcomeView extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('WelcomeView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'WelcomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+        backgroundColor: const Color.fromRGBO(96, 37, 225, 1),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 100, left: 16, right: 16),
+          child: Stack(
+            children: [
+              SvgPicture.asset("assets/BusWay.svg"),
+              Center(child: SvgPicture.asset("assets/load.svg")),
+              const Text("Quick & Easy to Travel anywhere & anytime",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white
+                  ))
+            ],
+          ),
+        ));
   }
 }

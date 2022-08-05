@@ -14,6 +14,7 @@ abstract class Routes {
   static const PAYMENT = _Paths.PAYMENT;
   static const SEARCH = _Paths.SEARCH;
   static const PROFILE = _Paths.PROFILE;
+  static const SPLASHSREEN = _Paths.SPLASHSREEN;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const PAYMENT = '/payment';
   static const SEARCH = '/search';
   static const PROFILE = '/profile';
+  static const SPLASHSREEN = '/splashsreen';
 }
