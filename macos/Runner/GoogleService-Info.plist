@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>450598201491-ctvj6bgpsrdaut4sl8e20vegdl45vuqb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.450598201491-ctvj6bgpsrdaut4sl8e20vegdl45vuqb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC0HagiZuUEEtIMUbfyt-GSlxcAVm3jPcg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>450598201491</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.busway</string>
+	<key>PROJECT_ID</key>
+	<string>busway-78e31</string>
+	<key>STORAGE_BUCKET</key>
+	<string>busway-78e31.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:450598201491:ios:3bf52bf31d6f64bcd1c566</string>
+	<key>DATABASE_URL</key>
+	<string>https://busway-78e31-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
