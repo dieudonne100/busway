@@ -102,11 +102,11 @@ class _LoginViewState extends State<LoginView> {
     );
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(96, 37, 225, 1),
+      backgroundColor: const Color.fromRGBO(96, 37, 225, 1),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Color.fromRGBO(96, 37, 225, 1),
+            color: const Color.fromRGBO(96, 37, 225, 1),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Form(
@@ -151,11 +151,14 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        BottonSign(
-                            images: "assets/Google.svg",
-                            title: "Sign up with Google"),
-                        SizedBox(
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: const BottonSign(
+                              images: "assets/Google.svg",
+                              title: "Sign up with Google"),
+                        ),
+                        const SizedBox(
                           height: 16,
                         ),
                       ],
@@ -201,8 +204,8 @@ class _LoginViewState extends State<LoginView> {
             .signInWithEmailAndPassword(email: email, password: password)
             .then((uid) => {
                   Fluttertoast.showToast(msg: "Login Successful"),
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const HomeView())),
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => HomeView())),
                 });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
