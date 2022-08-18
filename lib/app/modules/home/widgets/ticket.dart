@@ -1,5 +1,9 @@
+import 'package:busway/app/controllers/firebase_controller.dart';
 import 'package:busway/app/modules/home/widgets/path_rectangle_triangle.dart';
+import 'package:busway/app/utils/datetime_hour.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Tickets extends StatefulWidget {
   const Tickets({Key? key}) : super(key: key);
@@ -9,13 +13,18 @@ class Tickets extends StatefulWidget {
 }
 
 class _TicketsState extends State<Tickets> {
+  var controller = Get.put(FirebaseController());
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 900,
-      child: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemBuilder: (context, index) => ClipRRect(
+    return controller.obx(
+        onLoading: const CircularProgressIndicator.adaptive(),
+        (state) => ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(8),
+            itemBuilder: (context, index) {
+              return ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   padding: const EdgeInsets.only(left: 16, bottom: 16),
@@ -32,12 +41,12 @@ class _TicketsState extends State<Tickets> {
                             width: 90,
                             height: 32,
                             color: const Color(0xffFF711D),
-                            child: const Padding(
-                              padding:
-                                  EdgeInsets.only(top: 5, left: 30, right: 5),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 5, left: 30, right: 5),
                               child: Text(
-                                "General express",
-                                style: TextStyle(
+                                state!["buscollection"][index]["nom_agence"],
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 10,
                                     fontWeight: FontWeight.w400),
@@ -52,7 +61,7 @@ class _TicketsState extends State<Tickets> {
                                 child: Container(
                                   width: 20,
                                   height: 32,
-                                  color: Colors.white,
+                                  color: Colors.blue,
                                 ),
                               ))
                         ],
@@ -65,18 +74,20 @@ class _TicketsState extends State<Tickets> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisSize: MainAxisSize.min,
-                            children: const [
+                            children: [
                               Text(
-                                "7:00",
-                                style: TextStyle(
+                                timestampHour(state["buscollection"][index]
+                                    ["heure_depart"]),
+                                style: const TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Text(
-                                "9:30",
-                                style: TextStyle(
+                                timestampHour(state!["buscollection"][index]
+                                    ["heure_arriver"]),
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                             ],
@@ -109,26 +120,26 @@ class _TicketsState extends State<Tickets> {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
-                                "Saint Petersburg",
-                                style: TextStyle(
+                                state["buscollection"][index]["ville_arriver"],
+                                style: const TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w700),
                               ),
-                              Text(
+                              const Text(
                                 "Bus Station",
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w400),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Text(
-                                "Narva",
-                                style: TextStyle(
+                                state["buscollection"][index]["ville_depart"],
+                                style: const TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w700),
                               ),
-                              Text(
+                              const Text(
                                 "Bus Station",
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w400),
@@ -241,11 +252,11 @@ class _TicketsState extends State<Tickets> {
                     ],
                   ),
                 ),
-              ),
-          separatorBuilder: (context, index) => const SizedBox(
-                height: 40,
-              ),
-          itemCount: 5),
-    );
+              );
+            },
+            separatorBuilder: (context, index) => const SizedBox(
+                  height: 40,
+                ),
+            itemCount: state!["buscollection"].length));
   }
 }
